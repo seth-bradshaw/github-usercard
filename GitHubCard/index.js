@@ -14,7 +14,6 @@ import axios from 'axios'
 
 axios.get('https://api.github.com/users/seth-bradshaw')
   .then(res => {
-    console.log('here is the data:', res.data)
     return cardMaker(res.data)
   })
   .catch(err => {
@@ -26,7 +25,7 @@ axios.get('https://api.github.com/users/seth-bradshaw')
   STEP 4: Pass the data received from Github into your function,
     and append the returned markup to the DOM as a child of .cards
 */
-const entryPoint = document.querySelector('.container')
+
 /*
   STEP 5: Now that you have your own card getting added to the DOM, either
     follow this link in your browser https://api.github.com/users/<Your github name>/followers,
@@ -95,7 +94,7 @@ function cardMaker(obj){
   following.textContent = `Following: ${obj.following}`
   bio.textContent = `Bio: ${obj.bio}`
 
-  entryPoint.append(newCard)
+  
   newCard.appendChild(profileImg);
   newCard.appendChild(cardInfo);
   cardInfo.appendChild(cardH3);
@@ -107,8 +106,8 @@ function cardMaker(obj){
   cardInfo.appendChild(following);
   cardInfo.appendChild(bio);
 
-  
-  
+  const entryPoint = document.querySelector('.container')
+  return entryPoint.append(newCard)
 }
 /*
   List of LS Instructors Github username's:
